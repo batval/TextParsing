@@ -21,6 +21,7 @@ public class InputFile {
         } catch (FileNotFoundException e) {
             System.out.println("File not found!");
         }
+
         return text;
     }
 }
