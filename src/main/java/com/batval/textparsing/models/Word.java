@@ -1,5 +1,9 @@
 package com.batval.textparsing.models;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class Word implements Component {
 
     private String componentContent;
@@ -29,6 +33,7 @@ public class Word implements Component {
 
     @Override
     public void printing() {
-        System.out.print(" ".concat(componentContent));
+         System.out.print(" ".concat(componentContent));
+
     }
 }
