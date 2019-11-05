@@ -1,8 +1,6 @@
 package com.batval.textparsing.models;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+
 import java.util.LinkedList;
 import java.util.List;
 
