@@ -31,6 +31,10 @@ public class LexemeParser implements Parser {
     @Override
     public void handleText(String text, Component component) {
 
+        /*
+        Enables DOTALL mode. In this mode, expression. matches any character, including the end of line character.
+        By default, this expression does not match end-of-line characters.
+         */
         Pattern lexeme = Pattern.compile(REGEX, Pattern.DOTALL);
         Matcher matcher = lexeme.matcher(text);
 

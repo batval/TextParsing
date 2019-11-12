@@ -9,10 +9,10 @@ public class InputFile {
 
     private static final Logger logger = LoggerFactory.getLogger(InputFile.class);
 
-    public String getText(String fileAddres) throws IOException {
+    public String getText(String fileAddress) throws IOException {
         String str = "";
         String text = "";
-        try (FileInputStream fileInputStream = new FileInputStream(fileAddres);
+        try (FileInputStream fileInputStream = new FileInputStream(fileAddress);
              BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream))) {
 
             str = bufferedReader.readLine();

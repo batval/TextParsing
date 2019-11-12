@@ -20,7 +20,7 @@ public class Application {
 
 
  2. Create a file upload controller
-   The initial application already contains a few classes to deal with storing and loading the uploaded files on disk; they’re all located in the hello.storage package. We’ll use those in our new FileUploadController.
+   The initial application already contains a few classes to deal with storing and loading the uploaded files on disk; they’re all located in the hello.storage package. We will use those in our new FileUploadController.
 
 /-
 src/main/java/hello/FileUploadController.java
