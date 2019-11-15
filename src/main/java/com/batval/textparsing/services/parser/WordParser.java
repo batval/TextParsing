@@ -12,11 +12,17 @@ public class WordParser implements Parser {
     //'p{Punct}' - matches any kind of punctuation character.
 
     private final String REGEX = "(\\w+)|(\\p{Punct})";
+private Pattern pattern = null;
+
+    public WordParser() {
+        this.pattern = Pattern.compile(REGEX);
+    }
+
 
     @Override
-    public void handleText(String text, Component component) {
+    public void parse(String text, Component component) {
 
-        Pattern pattern = Pattern.compile(REGEX);
+
         Matcher matcher = pattern.matcher(text);
 
         while (matcher.find()) {

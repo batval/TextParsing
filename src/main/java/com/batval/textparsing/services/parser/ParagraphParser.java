@@ -37,15 +37,16 @@ public class ParagraphParser implements Parser {
     private final String REGEX_FULL = REGEX_CHAPTER_NAME + REGEX_PARAGRAPH + REGEX_LISTING;
 
     private SentenceParser sentenceParser = null;
+    private Pattern pattern=null;
 
     public ParagraphParser(SentenceParser sentenceParser) {
         this.sentenceParser = sentenceParser;
+        this.pattern = Pattern.compile(REGEX_FULL,Pattern.DOTALL);
     }
 
     @Override
-    public void handleText(String text, Component component) {
+    public void parse(String text, Component component) {
 
-        Pattern pattern = Pattern.compile(REGEX_FULL, Pattern.DOTALL);
         Matcher matcher = pattern.matcher(text);
 
         while (matcher.find()) {
@@ -56,7 +57,7 @@ public class ParagraphParser implements Parser {
             }
             if (matcher.group(2) != null) {
                 Component paragraph = new Composite(CompositeTypes.PARAGRAPH);
-                sentenceParser.handleText(matcher.group(2), paragraph);
+                sentenceParser.parse(matcher.group(2), paragraph);
                 ((Composite) component).add(paragraph);
             }
             if (matcher.group(6) != null) {

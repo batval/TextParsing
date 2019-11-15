@@ -36,19 +36,21 @@ public class SentenceParser implements Parser {
     //.?!: matches a single character in the list .?!: (case sensitive)
     private final String REGEX = "((\\s*)[А-ЯA-Z]((т.п.|т.д.|пр.|etc.)|[^?!.\\(]|\\([^\\)]*\\))*[.?!:])";
     private LexemeParser lexemeParser = null;
+    private Pattern pattern=null;
 
     public SentenceParser(LexemeParser lexemeParser) {
         this.lexemeParser = lexemeParser;
+        this.pattern = Pattern.compile(REGEX,Pattern.DOTALL);
     }
 
     @Override
-    public void handleText(String text, Component component) {
-        Pattern pattern = Pattern.compile(REGEX, Pattern.DOTALL);
+    public void parse(String text, Component component) {
+
         Matcher matcher = pattern.matcher(text);
 
         while (matcher.find()) {
             Component comp = new Composite(CompositeTypes.SENTENCE);
-            lexemeParser.handleText(matcher.group(), comp);
+            lexemeParser.parse(matcher.group(), comp);
             ((Composite) component).add(comp);
         }
     }

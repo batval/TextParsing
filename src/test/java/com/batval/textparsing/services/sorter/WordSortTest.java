@@ -38,7 +38,8 @@ public class WordSortTest {
 
     @After
     public void afterTest() {
-
+wordsToStringSorted=null;
+wordsToString=null;
     }
 
 

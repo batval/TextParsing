@@ -44,4 +44,6 @@ public class Composite implements Component {
     public Component getChild(int i){
         return componentList.get(i);
     }
+
+
 }

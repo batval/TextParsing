@@ -6,13 +6,13 @@ import org.junit.Test;
 import java.io.IOException;
 
 
-public class InputFileTest {
+public class FileManagerTest {
 
     @Test
     public void getText() throws IOException {
-        InputFile inputFile = new InputFile();
+        FileManager fileManager = new FileManager();
         String text=null;
-        text = inputFile.getText("src/main/resources/source_file.txt");
+        text = fileManager.getText("src/main/resources/source_file.txt");
         Assert.assertNotNull(text);
     }
 }

@@ -5,9 +5,9 @@ import java.io.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class InputFile {
+public class FileManager {
 
-    private static final Logger logger = LoggerFactory.getLogger(InputFile.class);
+    private static final Logger logger = LoggerFactory.getLogger(FileManager.class);
 
     public String getText(String fileAddress) throws IOException {
         String str = "";
@@ -21,11 +21,9 @@ public class InputFile {
                 str = bufferedReader.readLine();
             }
             if (text.isEmpty()) {
-                System.out.println("File is empty or error has occurred!");
                 logger.error("File is empty or error has occurred!");
             }
         } catch (FileNotFoundException e) {
-            System.out.println("File not found!");
             logger.error("File not found!");
         }
 

@@ -15,19 +15,20 @@ public class ChapterParser implements Parser {
     //{3} Quantifier — Matches exactly 3 times
     private final String REGEX = "\\p{Space}(.*?)\\n{3}";
     private ParagraphParser paragraphParser = null;
+    private Pattern pattern=null;
 
     public ChapterParser(ParagraphParser paragraphParser) {
         this.paragraphParser = paragraphParser;
+        this.pattern = Pattern.compile(REGEX,Pattern.DOTALL);
     }
 
     @Override
-    public void handleText(String text, Component component) {
-        Pattern pattern = Pattern.compile(REGEX, Pattern.DOTALL);
+    public void parse(String text, Component component) {
         Matcher matcher = pattern.matcher(text);
 
         while (matcher.find()) {
             Component comp = new Composite(CompositeTypes.CHAPTER);
-            paragraphParser.handleText(matcher.group(), comp);
+            paragraphParser.parse(matcher.group(), comp);
             ((Composite) component).add(comp);
         }
     }

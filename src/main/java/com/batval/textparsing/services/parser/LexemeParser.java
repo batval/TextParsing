@@ -23,25 +23,26 @@ public class LexemeParser implements Parser {
     //-# matches the characters -# literally (case sensitive)
     private final String REGEX = "((\\w+?-?\\w*?)[,.!?:\\s])|(#.*?-#)";
     private WordParser wordParser = null;
+    private Pattern pattern=null;
 
     public LexemeParser(WordParser wordParser) {
         this.wordParser = wordParser;
+        this.pattern = Pattern.compile(REGEX,Pattern.DOTALL);
     }
 
     @Override
-    public void handleText(String text, Component component) {
+    public void parse(String text, Component component) {
 
         /*
         Enables DOTALL mode. In this mode, expression. matches any character, including the end of line character.
         By default, this expression does not match end-of-line characters.
          */
-        Pattern lexeme = Pattern.compile(REGEX, Pattern.DOTALL);
-        Matcher matcher = lexeme.matcher(text);
+        Matcher matcher = pattern.matcher(text);
 
         while (matcher.find()) {
             if (matcher.group(1) != null) {
                 Component comp = new Composite(CompositeTypes.LEXEME);
-                wordParser.handleText(matcher.group(1), comp);
+                wordParser.parse(matcher.group(1), comp);
                 ((Composite) component).add(comp);
             }
 
