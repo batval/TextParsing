@@ -1,5 +1,5 @@
  1. Create an Application class
-   To start a Spring Boot MVC application, we first need a starter; here, spring-boot-starter-thymeleaf and spring-boot-starter-web are already added as dependencies. To upload files with Servlet containers, you need to register a MultipartConfigElement class (which would be <multipart-config> in web.xml). Thanks to Spring Boot, everything is auto-configured for you!
+   To start a Spring Boot MVC application, we first need a starter; here, spring-boot-starter-thymeleaf and spring-boot-starter-web are already added as dependencies. To upload files with Servlet containers, you need to register a MultipartConfigElement class (which would be #<multipart-config> in web.xml-#). Thanks to Spring Boot, everything is auto-configured for you!
 
    All you need to get started with this application is the following Application class.
 
@@ -82,6 +82,6 @@ public class FileUploadController {
 
 -/
 
-   This class is annotated with @Controller so Spring MVC can pick it up and look for routes. Each method is tagged with @GetMapping or @PostMapping to tie the path and the HTTP action to a particular Controller action.
+   This class is annotated with #@Controller-# so Spring MVC can pick it up and look for routes. Each method is tagged with #@GetMapping-# or #@PostMapping-# to tie the path and the HTTP action to a particular Controller action.
 
 
